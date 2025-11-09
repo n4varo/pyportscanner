@@ -50,23 +50,22 @@ def _grab_banner(sock, port, target, timeout=4.0, attempts=3):
                 except Exception:
                     break
             else:
-                # No data available so we send probes to the services that usually respond
+                # sending probes to the services that usually response if the above fails
                 try:
                     if port in (80, 8080, 8000):
                         sock.sendall(b"HEAD / HTTP/1.0\r\nHost: %s\r\n\r\n" % target.encode())
                     elif port in (21, 23, 25, 110, 143, 993, 995, 22, 5431):
-                        # CRLF sometimes triggers a banner or server greeting
+                        
                         sock.sendall(b"\r\n")
                     else:
-                        # generic nudge
+                        
                         sock.sendall(b"\r\n")
                 except Exception:
-                    # ignore send errors (some services will reset/ignore)
+                
                     pass
-                # then wait a little longer on next loop iteration
-        # and return first meaningful line
+               
         if banner:
-            # prefer first non-empty line
+          
             for line in banner.splitlines():
                 if line.strip():
                     return line.strip()
@@ -110,7 +109,7 @@ def scan_port(target, port, args):
                     closed_port_count += 1
                     print(f"[-] Port {port:<5} closed (connection refused)")
         else:
-            # Show filtered ports by default unless --hide-filtered is used
+          
             if not getattr(args, "hide_filtered", False):
                 with print_lock:
                     print(f"[*] Port {port:<5} is filtered or cannot be reached. (errno: {result})")
