@@ -8,7 +8,7 @@ Currently, verbose mode outputs all ports in the range(default is 1-10000) to th
 
 I am also aware that the banner grabbing function has some 'hiccups' on select ports. I will soon release a patch to fix these said 'hiccups'.
 
-The help menu explains the program in as a whole pretty well, but if you have any problems or questions, feel free to reach out to me.
+The help menu explains the program as a whole pretty well, but if you have any problems or questions, feel free to reach out to me.
 
 There are plans to add more functionality such as UDP scanning, OS detection, and more but I am unsure as to when these features will be added since I am working on multiple projects currently.
 >>>>>>> ad5ecdf (Initial commit)
